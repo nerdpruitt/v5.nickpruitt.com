@@ -1,0 +1,12 @@
+html {
+    background-color: #121921;
+    padding: 2px;
+}
+
+body {
+    background-color: #fff;
+    border-radius: 6px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fira Sans', sans-serif;
+}
