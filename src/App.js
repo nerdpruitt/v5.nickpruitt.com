@@ -60,19 +60,11 @@ class LetterList extends Component {
 
 }
 
-class Letters extends Component {
-  render() {
-    return (
-      <LetterList letters={this.props.letters} />
-    );
-  }
-}
-
 class App extends Component {
   render() {
     return (
       <main>
-        <Letters letters={nameLetters} />
+        <LetterList letters={nameLetters} />
       </main>
     );
   }
