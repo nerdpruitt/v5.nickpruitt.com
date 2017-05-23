@@ -1,70 +1,40 @@
 import React, { Component } from 'react';
 import './App.css';
-import nameLetters from './nameLetters'; // the letters data that builds my name
 
-function changeFontWeight(state, props){
-  if ( state.fontWeight === 'thin' ) {
-    return { fontWeight: 'light' }
-  }
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
-  if ( state.fontWeight === 'light' ) {
-    return { fontWeight: 'medium' }
-  }
+import Home from './Home.js';
+import About from './About.js';
+import Work from './Work.js';
 
-  if ( state.fontWeight === 'medium' ) {
-    return { fontWeight: 'bold' }
-  }
-
-  if ( state.fontWeight === 'bold' ) {
-    return { fontWeight: 'black' }
-  }
-
-  if ( state.fontWeight === 'black' ) {
-    return { fontWeight: 'thin' }
-  }
-}
-
-class LetterItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { fontWeight: 'thin' };
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.setState(changeFontWeight);
-  }
-
-  render() {
-    return <span onClick={this.handleClick} className={this.state.fontWeight}>{this.props.value.letter}</span>;
-  };
-}
-
-class LetterList extends Component {
-  render() {
-    const letters = this.props.letters;
-
-    const letterItems = letters.map((letter) =>
-      <div key={letter.id} className={letter.class}>
-        <LetterItem value={letter} />
+const AppRouter = () => (
+  <Router>
+    <div>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/work">Work</Link></li>
+        </ul>
+      </nav>
+      <div className="main">
+        <Route exact path="/" component={Home}/>
+        <Route path="/about" component={About}/>
+        <Route path="/work" component={Work}/>
       </div>
-    );
-
-    return(
-      <div className="grid">
-        {letterItems}
-      </div>
-    );
-  }
-
-}
+    </div>
+  </Router>
+)
 
 class App extends Component {
   render() {
     return (
       <main>
-        <LetterList letters={nameLetters} />
+        <AppRouter />
       </main>
     );
   }

@@ -1,43 +1,48 @@
-.grid {
-  display: grid;
-  grid-template-columns: repeat(6, 16.666666667%);
-  grid-template-rows: repeat(5, 20%);
-  grid-gap: 8px 8px;
-  height: calc(100vh - 4px);
+.main {
+  height: calc(100vh - 36px);
+  overflow-y: scroll;
   width: calc(100vw - 4px);
 }
 
-.grid > div {
+.home {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 8px 8px;
+  height: 100%;
+}
+
+.home > div {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.grid span {
+.home span {
   user-select: none;
   font-size: 164px;
   text-align: center;
   width: 100%;
 }
 
-.grid span.thin {
+.home span.thin {
   font-weight: 100;
 }
 
-.grid span.light {
+.home span.light {
   font-weight: 300;
 }
 
-.grid span.medium {
+.home span.medium {
   font-weight: 500;
 }
 
-.grid span.bold {
+.home span.bold {
   font-weight: 700;
 }
 
-.grid span.black {
+.home span.black {
   font-weight: 900;
 }
 
@@ -89,4 +94,13 @@
 .T-2 {
     grid-column-start: 6;
     grid-row-start: 4;
+}
+
+.default {
+  display: grid;
+  grid-template-columns: 128px minmax(40ch, 65ch) 1fr;
+}
+
+.text {
+  line-height: 1.5;
 }
