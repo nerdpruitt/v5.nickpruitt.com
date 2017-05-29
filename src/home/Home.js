@@ -56,7 +56,6 @@ class LetterList extends Component {
       </div>
     );
   }
-
 }
 
 const Home = () => (
