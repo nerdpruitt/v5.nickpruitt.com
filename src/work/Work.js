@@ -5,14 +5,14 @@ import {
   Switch
 } from 'react-router-dom'
 
-import workData from './workData';
+import workJson from './work.json';
 import WorkAPI from './WorkAPI';
 
-// Add categories (aka what I did), image paths array
-
+// Work Detail -----------
 class WorkDetail extends Component {
     render() {
-        const item = WorkAPI.getWorkItem(this.props.match.params.id, workData);
+        const workData = WorkAPI.getAllWorkItems( workJson );
+        const item = WorkAPI.getWorkItem( this.props.match.params.id, workData );
 
         return (
             <div>
@@ -20,7 +20,7 @@ class WorkDetail extends Component {
                     <div></div>
                     <div className="text">
                         <h1>{item.title}</h1>
-                        <p>{item.description}</p>
+                        <div dangerouslySetInnerHTML={ {__html: item.body} } />
                     </div>
                     <div></div>
                 </div>
@@ -29,6 +29,8 @@ class WorkDetail extends Component {
     };
 }
 
+
+// Work Grid -----------
 class WorkItem extends Component {
     render() {
         const workId = this.props.value.id;
@@ -43,7 +45,7 @@ class WorkList extends Component {
   render() {
     const workList = this.props.work;
 
-    const workItems = workList.map((item) =>
+    const workItems = workList.map( ( item ) =>
       <div key={item.id}>
         <WorkItem value={item} />
       </div>
@@ -60,6 +62,8 @@ class WorkList extends Component {
 
 class WorkGrid extends Component {
     render() {
+        const workData = WorkAPI.getAllWorkItems( workJson );
+
         return (
             <div>
                 <div className="default">
