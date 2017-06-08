@@ -98,9 +98,29 @@
 
 .default {
   display: grid;
-  grid-template-columns: 128px minmax(40ch, 65ch) 1fr;
+  grid-template-columns: minmax(16px, 128px) minmax(40ch, 65ch) minmax(16px, 1fr);
 }
 
 .text {
   line-height: 1.5;
+}
+
+.work-list {
+  justify-content: center;
+  display: flex;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.work-list__item {
+  padding: 8px;
+  width: 25%;
+}
+
+.work-list__item a {
+  background-color: #efefef;
+  display: block;
+  height: 0;
+  padding-bottom: 100%;
+  width: 100%;
 }
